@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SocketChat</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Victor+Mono:wght@500&display=swap"
+			rel="stylesheet"
+		/>
+		<audio id="message-sound" src="./audio/FX.mp3" preload="auto"></audio>
+		<link rel="stylesheet" href="./stylesheets/style.css" />
+		<script src="https://cdn.jsdelivr.net/npm/socket.io-client/dist/socket.io.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<ul id="messages"></ul>
+		<form id="form" action="">
+			<select id="room">
+				<option>user1</option>
+				<option>user2</option>
+				<option>user3</option>
+			</select>
+			<input id="input" autocomplete="off" /><button>Send</button>
+		</form>
+		<script src="./javascripts/chat.js"></script>
+	</body>
+</html>

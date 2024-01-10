@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  app:
+    build: ./
+    env_file: .env
+    restart: always
+    depends_on:
+      - redis
+
+  redis:
+    restart: always
+    image: redis:alpine
+
+  nginx:
+    image: nginx:alpine
+    env_file: .env
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app
+    ports:
+      - "${EXPOSE_WEB_PORT:-8080}:8080"

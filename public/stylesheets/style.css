@@ -1,0 +1,199 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	min-height: 100vh;
+	top: 0;
+	bottom: 0;
+	transition: background 555.5s ease;
+	-webkit-transition: background 555.5s ease;
+	-moz-transition: background 555.5s ease;
+	-ms-transition: background 555.5s ease;
+	-o-transition: background 555.5s ease;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+#form {
+	background: rgba(112, 178, 214, 0.15);
+	padding: 0.25rem;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	height: 3rem;
+	box-sizing: border-box;
+}
+
+select {
+	border: none;
+	outline: none;
+	padding: 0 1rem;
+	background-color: none;
+	border-bottom: 1px solid black;
+	flex-grow: 1;
+	margin: 0.25rem;
+}
+
+#input {
+	border: none;
+	outline: none;
+	padding: 0 1rem;
+	background-color: none;
+	border-bottom: 1px solid black;
+	flex-grow: 1;
+	margin: 0.25rem;
+}
+
+#input:focus {
+	outline: none;
+}
+
+#form > button {
+	outline: none;
+	background-color: none;
+	padding: 0 1rem;
+	margin: 0.25rem;
+	border: 1px solid black;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+
+#messages {
+	color: black;
+	padding: 10px;
+	margin: 0;
+	border-radius: 10px;
+	font-family: Victor Mono, Nexa, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+#messages > li {
+	margin: 3vh 10vw;
+	display: flex;
+	flex-direction: column;
+	background: linear-gradient(
+		90deg,
+		rgba(181, 189, 200, 0.5) 0%,
+		rgba(130, 140, 149, 0.5) 50%,
+		rgba(149, 155, 160, 0.5) 100%
+	);
+	border-radius: 20px;
+	padding: 10px;
+	overflow-y: auto;
+	animation: messagesAnimation 1s forwards;
+}
+
+@keyframes messagesAnimation {
+	from {
+		opacity: 0;
+		transform: scale(0);
+	}
+
+	25% {
+		opacity: 0.7;
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+#messages > li.left {
+	width: fit-content;
+	align-items: flex-start;
+	animation: messagesLiAnimation1 2s forwards;
+	-webkit-animation: messagesLiAnimation1 2s forwards;
+}
+
+@keyframes messagesLiAnimation1 {
+	from {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0.5;
+		transform: rotateY(50deg);
+		-webkit-transform: rotateY(50deg);
+		-moz-transform: rotateY(50deg);
+		-ms-transform: rotateY(50deg);
+		-o-transform: rotateY(50deg);
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+#messages > li.left span {
+	background-color: rgb(143, 207, 208);
+	margin-bottom: 2vh;
+}
+
+#messages > li.right {
+	width: fit-content;
+	align-items: flex-end;
+	opacity: 0;
+	animation: messagesLiAnimation2 2s forwards;
+	-webkit-animation: messagesLiAnimation2 2s forwards;
+}
+
+@keyframes messagesLiAnimation2 {
+	from {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0.5;
+		transform: rotateY(50deg);
+		-webkit-transform: rotateY(50deg);
+		-moz-transform: rotateY(50deg);
+		-ms-transform: rotateY(50deg);
+		-o-transform: rotateY(50deg);
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+#messages > li.right span {
+	background-color: rgb(143, 177, 208);
+	margin-bottom: 2vh;
+}
+
+#messages > li span {
+	padding: 10px;
+	border-radius: 10px;
+}
+
+ul#messages {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+ul#messages li {
+	max-width: 60%;
+	margin-bottom: 10px; /* Adjust as needed */
+}
+
+ul#messages li.right {
+	align-self: flex-end;
+}
+
+ul#messages li.left {
+	align-self: flex-start;
+}
