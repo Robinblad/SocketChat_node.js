@@ -1,4 +1,4 @@
-const { createClient } = require("redis"); // импортируем метод createClient из пакета redis
+const { createClient } = require("redis"); // import the createClient method from the redis package
 
 const localId =
 	"#" +
@@ -6,7 +6,7 @@ const localId =
 	(Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6) +
 	(Math.random() * 0xfffff * 1000000).toString(16).slice(0, 6);
 
-// создание нового экземпляр клиента Redis с конфигурацией по умолчанию
+// creating a new Redis client instance with default configuration
 const client = createClient({
 	url: "redis://redis:6379",
 });
@@ -17,7 +17,7 @@ client.connect();
 pubClient.connect();
 subClient.connect();
 
-// Cлушатели "error" и "connect" реагируют на события, создаваемые клиентом Redis, например, при возникновении ошибки или при успешном подключении.
+// The error and connect listeners respond to events created by the Redis client, such as when an error occurs or when a connection is successful.
 
 client.on("error", (error) => {
 	console.error("Error connecting to Redis:", error);
@@ -27,7 +27,7 @@ client.on("connect", () => {
 	console.log("Connected to Redis");
 });
 
-// Это немедленно вызываемое функциональное выражение (IIFE), которое используется для запуска асинхронного кода. Он пытается подключиться к серверу Redis при запуске сценария
+// This is an immediately invoked function expression (IIFE) that is used to run asynchronous code. It tries to connect to the Redis server when running the script
 (async () => {
 	try {
 		await client.connect();
@@ -36,13 +36,13 @@ client.on("connect", () => {
 	}
 })();
 
-// Данная функция получает значение связанное с ключом из Redis, анализирует его из JSON и возвращает
+// This function gets the value associated with a key from Redis, parses it from JSON and returns
 async function get(key, defaultValue) {
 	const value = await client.get(key);
 	return value || defaultValue || null;
 }
 
-// Данная функция сохраняет значение (после преобразования его в строку JSON), связанное с ключом Redis
+// This function stores the value (after converting it to a JSON string) associated with a Redis key
 async function set(key, value) {
 	if (!value) {
 		await client.del(key);
@@ -62,7 +62,7 @@ async function sub(type, callback) {
 	});
 }
 
-// Здесь экспортируется функции get, set и del, чтобы их можно было использовать в других частях приложения
+// There are exports the get, set and del functions here, so they can be used in other parts of the application
 module.exports = {
 	get,
 	set,
@@ -71,11 +71,9 @@ module.exports = {
 	sub,
 };
 
-//const { createClient } = require("redis"); // импортируем метод createClient из пакета redis
+//const { createClient } = require("redis");
 
-//const client = createClient(); // создание нового экземпляр клиента Redis с конфигурацией по умолчанию
-
-//// Cлушатели "error" и "connect" реагируют на события, создаваемые клиентом Redis, например, при возникновении ошибки или при успешном подключении.
+//const client = createClient();
 
 //client.on("error", (error) => {
 //  console.error("Error connecting to Redis:", error);
@@ -85,7 +83,6 @@ module.exports = {
 //  console.log("Connected to Redis");
 //});
 
-//// Это немедленно вызываемое функциональное выражение (IIFE), которое используется для запуска асинхронного кода. Он пытается подключиться к серверу Redis при запуске сценария
 //(async () => {
 //  try {
 //    await client.connect();
@@ -94,7 +91,6 @@ module.exports = {
 //  }
 //})();
 
-//// Данная функция получает значение связанное с ключом из Redis, анализирует его из JSON и возвращает
 //async function get(key) {
 //  try {
 //    const value = await client.get(key);
@@ -105,7 +101,6 @@ module.exports = {
 //  }
 //}
 
-//// Данная функция сохраняет значение (после преобразования его в строку JSON), связанное с ключом Redis
 //async function set(key, value) {
 //  try {
 //    await client.set(key, JSON.stringify(value));
@@ -115,7 +110,6 @@ module.exports = {
 //  }
 //}
 
-//// Эта функция удаляет ключ и связанное с ним значение из Redis
 //async function del(key) {
 //  try {
 //    await client.del(key);
@@ -125,7 +119,6 @@ module.exports = {
 //  }
 //}
 
-//// Здесь экспортируется функции get, set и del, чтобы их можно было использовать в других частях приложения
 //module.exports = {
 //  get,
 //  set,
