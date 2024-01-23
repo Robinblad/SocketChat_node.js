@@ -1,6 +1,8 @@
 {
 	"name": "frameworks-js-t3-12",
 	"version": "1.0.0",
+	"author": "Robinblad",
+	"homepage": "https://github.com/Robinblad/SocketChat_node.js",
 	"private": true,
 	"scripts": {
 		"start": "node app.js"
